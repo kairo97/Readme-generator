@@ -11,7 +11,12 @@ inquirer
         type: "input",
         message: "write a short description of your project please",
         name: "description"
-     }, {
+     },{
+        type:"input",
+        message: "please post a link to a screenshot of your project here if applicable",
+        name: 'screenshot',
+        default: ''
+      }, {
         type: "confirm",
         message: "will this project need a table of contents?",
         name: "table",
@@ -44,20 +49,45 @@ inquirer
         name: 'Other Liscense',
         Message: 'Please type the name of your license',
         when: (answers) => answers.license === 'Other'
-
      },{
         type: 'input',
         name: 'badge',
-        message: ''
-     },{}
-
+        message: 'please paste a link to any badges you would like displayed on your README.md file (optional)',
+        default: ""
+     },{
+        type: 'input',
+        name: 'features',
+        message: 'please list features of your project here',
+        default: ""
+     },{
+        type: 'confirm',
+        name: 'contribute',
+        message: 'would you like other to be able to contribute to this project?',
+        default: 'no'
+     },{
+        type: 'input',
+        name: 'contributions',
+        message: 'if you would like others to be able to contribute to this project please write the guidelines for how to contribute here',
+        when: (answers) => answers.contribute === 'Yes'
+        
+     },{
+        type: 'confirm',
+        name: 'test',
+        message: 'would you like to include tests for this project?',
+        default: 'no'
+     }, {
+        type: 'input',
+        name: 'tests',
+        message: 'if  you would like to include tests for this application/project please provide examples of how to run them here',
+        when: (answer) => answer.test === 'Yes'
+     }
     ])     
-    // .then(res => {
-    //     fs.writeFile(`README.md`, JSON.stringify(res), (err) => {
-    //         if (err){
-    //             console.log(err)
-    //         } else {
-    //             console.log('successfully created README.md')
-    //         }
-    //     })
-    // })
+    .then(res => {
+        fs.writeFile(`README.md`, JSON.stringify(res), (err) => {
+            if (err){
+                console.log(err)
+            } else {
+                console.log('successfully created README.md')
+            }
+        })
+    })
