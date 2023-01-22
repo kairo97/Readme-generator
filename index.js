@@ -1,13 +1,20 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-inquirer
-    .prompt([
+ const title = inquirer.prompt([
      {
         type: "input",
         message: "what is the title of your project?",
         name: "title"
-     }, {
+     }])
+     .then(res => {
+      fs.appendFile(`README.md`, `###${res.title}`, (err) => {
+         if (err){
+            console.log(err)
+         }
+      })
+     })
+     const descript = inquirer.prompt([ {
         type: "input",
         message: "write a short description of your project please",
         name: "description"
@@ -16,18 +23,24 @@ inquirer
         message: "please post a link to a screenshot of your project here if applicable",
         name: 'screenshot',
         default: ''
-      }, {
+      }])
+      .then(res => {
+         fs.appendFile(`README.md`, `${res.descript}`, (err) => {
+            if (err){
+               console.log(err)
+            }
+         })
+        })
+         const contents = inquirer.prompt([{
         type: "confirm",
         message: "will this project need a table of contents?",
         name: "table",
         default: "no"
-     },
-     {
+         }, {
         type: "input",
         message: "what are the steps for installation?",
         name: "install",
         when: (answers) => answers.table === "Yes"
-
      }, {
         type: "input",
         message: "what are the steps for usage?",
@@ -39,7 +52,16 @@ inquirer
         name: "credits",
         default: "",
         when: (answers) => answers.table === "Yes"
-     },{
+     }])
+     .then(res => {
+      fs.appendFile(`README.md`, `##${res.contents}`, (err) => {
+         if (err){
+            console.log(err)
+         }
+      })
+     })
+    const license = inquirer.prompt([
+      {
         type: "list",
         name: "license",
         message: "what liscense are you using on this project?",
@@ -49,12 +71,37 @@ inquirer
         name: 'Other Liscense',
         Message: 'Please type the name of your license',
         when: (answers) => answers.license === 'Other'
-     },{
+     }])
+     .then(res => {
+      fs.appendFile(`README.md`, `${res.liscense}`, (err) => {
+         if (err){
+            console.log(err)
+         }
+      })
+     })
+     const badge = inquirer.prompt([
+      {
+         type: 'confirm',
+         message: 'would you like to badges for this project?',
+         name: 'badges',
+         default: 'no'
+      },
+      {
         type: 'input',
         name: 'badge',
         message: 'please paste a link to any badges you would like displayed on your README.md file (optional)',
-        default: ""
-     },{
+        default: "",
+        when: (answers) => answers.badges === "Yes"
+     }])
+     .then(res => {
+      fs.appendFile(`README.md`, `${res.badge}`, (err) => {
+         if (err){
+            console.log(err)
+         }
+      })
+     })
+     const features = inquirer.prompt([
+      {
         type: 'input',
         name: 'features',
         message: 'please list features of your project here',
@@ -70,7 +117,16 @@ inquirer
         message: 'if you would like others to be able to contribute to this project please write the guidelines for how to contribute here',
         when: (answers) => answers.contribute === 'Yes'
         
-     },{
+     }])
+     .then(res => {
+      fs.appendFile(`README.md`, `${res.features}`, (err) => {
+         if (err){
+            console.log(err)
+         }
+      })
+     })
+     const tests = inquirer.prompt([
+      {
         type: 'confirm',
         name: 'test',
         message: 'would you like to include tests for this project?',
@@ -83,7 +139,7 @@ inquirer
      }
     ])     
     .then(res => {
-        fs.writeFile(`README.md`, JSON.stringify(res), (err) => {
+        fs.appendFile(`README.md`, `${res.tests}`, (err) => {
             if (err){
                 console.log(err)
             } else {
