@@ -20,13 +20,13 @@
    ## badges
         https://img.shields.io/badge/MIT-License-blue
         
-    ## Features
+   ## Features
         Command line Prompts from inquirer, node js backend functionality, fs appendfile to create a README.md file
-    ## How to contribute
+   ## How to contribute
         undefined
         
-    ## Tests
+   ## Tests
         undefined
-        
+ ### walkthough video       
         [index.js - Readme-generator - Visual Studio Code 2023-01-24 09-32-25.zip](https://github.com/kairo97/Readme-generator/files/10492627/index.js.-.Readme-generator.-.Visual.Studio.Code.2023-01-24.09-32-25.zip)
 apove is a zipfile for the walkthrough video, due to it exceeding the file size allowed here
