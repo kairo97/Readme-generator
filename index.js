@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
- const title = inquirer.prompt([
+inquirer.prompt([
      {
         type: "input",
         message: "what is the title of your project?",
@@ -20,22 +20,23 @@ const fs = require('fs');
         message: "will this project need a table of contents?",
         name: "table",
         default: "no"
-         }, {
+         },
+         {
         type: "input",
         message: "what are the steps for installation?",
         name: "install",
-        when: (answers) => answers.table === "Yes"
+        when: (answers) => answers.table 
      }, {
         type: "input",
         message: "what are the steps for usage?",
         name: "usage",
-        when: (answers) => answers.table === "Yes"
+        when: (answers) => answers.table 
      }, {
         type: "input",
         message: "list everyone you need to credit on this project",
         name: "credits",
         default: "",
-        when: (answers) => answers.table === "Yes"
+        when: (answers) => answers.table 
      },{
         type: "list",
         name: "license",
@@ -57,7 +58,7 @@ const fs = require('fs');
         name: 'badge',
         message: 'please paste a link to any badges you would like displayed on your README.md file (optional)',
         default: "",
-        when: (answers) => answers.badges === "Yes"
+        when: (answers) => answers.badges 
      },{
         type: 'input',
         name: 'features',
@@ -72,7 +73,7 @@ const fs = require('fs');
         type: 'input',
         name: 'contributions',
         message: 'if you would like others to be able to contribute to this project please write the guidelines for how to contribute here',
-        when: (answers) => answers.contribute === 'Yes'
+        when: (answers) => answers.contribute 
         
      },{
         type: 'confirm',
@@ -83,22 +84,43 @@ const fs = require('fs');
         type: 'input',
         name: 'tests',
         message: 'if  you would like to include tests for this application/project please provide examples of how to run them here',
-        when: (answer) => answer.test === 'Yes'
+        when: (answer) => answer.test 
      }
     ])     
     .then(res => {
-        fs.appendFile(`README.md`, `###${res.title}
+        fs.appendFile(`README.md`, `
+        # ${res.title}
+        ## Description
         ${res.description}
-        screenshot of the project${res.screenshot}
-        #Install steps: ${res.install}
-        #Usage: ${res.usage}
-        #Credits: ${res.credits}
-        #${res.liscense}
+        ${res.screenshot}
+        
+        ## Table of contents
+        
+        
+        ## Installation
+        ${res.install}
+        
+        ## Usage
+        ${res.usage}
+        
+        ## Credits
+        ${res.credits}
+        
+        ## License
+        ${res.license}
+        
+        ## badges
         ${res.badge}
-        #Features:
+        
+        ## Features
         ${res.features}
+        ## How to contribute
         ${res.contributions}
-        tests: ${res.tests}`, (err) => {
+        
+        ## Tests
+        ${res.tests}
+        
+        `, (err) => {
             if (err){
                 console.log(err)
             } else {
