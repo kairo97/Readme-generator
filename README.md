@@ -1,58 +1,32 @@
-# project name
-## Description
-
-
-## Table of contents
-
-
-## Installation
-
-## Usage
-
-## Credits
-
-## License
-
-## badges
-
-## Features
-
-## How to contribute
-
-## Tests
-
-
-
-
-        # Readme generator
-        ## Description
+ # Readme generator
+ ## Description
         this project is a backend program using node.js and inquirer to generate a README.md document based on command line prompts
         Screenshot (Readme-gen).png
+  ## Table of contents
         
-        ## Table of contents
         
-        
-        ## Installation
+  ## Installation
         open the command line prompt in the index.js file, Run npm init to create a package.json folder, once that folder is created run the command npm install inquirer@8.2.4  to download the correct version of inquirer. Now you should have a node_modules folder, and a package-lock.json folder and are ready to run this program.
         
-        ## Usage
+  ## Usage
         In the command line Prompt in the index.js file, run node index.js, and follow the prompts in your command line, to upload a screenshot copy the image into VS code, then copy the relative path and paste that relative path into the section asking for a screenshot
         
-        ## Credits
+   ## Credits
         N/A
         
-        ## License
+   ## License
         MIT license
         
-        ## badges
+   ## badges
         https://img.shields.io/badge/MIT-License-blue
         
-        ## Features
+    ## Features
         Command line Prompts from inquirer, node js backend functionality, fs appendfile to create a README.md file
-        ## How to contribute
+    ## How to contribute
         undefined
         
-        ## Tests
+    ## Tests
         undefined
         
-        
+        [index.js - Readme-generator - Visual Studio Code 2023-01-24 09-32-25.zip](https://github.com/kairo97/Readme-generator/files/10492627/index.js.-.Readme-generator.-.Visual.Studio.Code.2023-01-24.09-32-25.zip)
+apove is a zipfile for the walkthrough video, due to it exceeding the file size allowed here
