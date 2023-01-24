@@ -88,7 +88,7 @@ inquirer.prompt([
      }
     ])     
     .then(res => {
-        fs.appendFile(`README.md`, `
+        fs.appendFile(__dirname + `/output/README.md`, `
         # ${res.title}
         ## Description
         ${res.description}
